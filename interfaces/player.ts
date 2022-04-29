@@ -1,5 +1,5 @@
 export default interface Player {
-  isMosquito: boolean;
+  team: string;
   selected: boolean;
   name: string;
 }

@@ -1,8 +1,8 @@
 import { PlayerProps } from '../types/types';
-import { TextInput, View, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 export default function Player({ index, name, setPlayerName }: PlayerProps) {
     return (
-      <View>
+      <>
         <Text 
             style={stylesText.player}
             >
@@ -13,11 +13,12 @@ export default function Player({ index, name, setPlayerName }: PlayerProps) {
             placeholder='Please enter your name here'
             keyboardType="default"
             value={name}
+            key={index}
             onChangeText={( currentTarget ) => {
             setPlayerName(index, currentTarget);
           }}
         />
-      </View>
+      </>
     );
   }
   

@@ -2,13 +2,12 @@ import React, { useState } from 'react';
 import { Player } from '../types/types';
 import Board from './Board';
 import NamePlayers from './NamePlayers';
-import PlayerCounter from './PlayerCounter'
+import PlayerCounter from './PlayerCounter';
 
 function WhoIsIt() {
   const [screen, setScreen] = useState<number>(0);
   const [playerCount, setPlayerCount] = useState<number>(3);
   const [players, setPlayers] = useState<Player[]>([]);
-  const[team, setTeam] = useState<Player[]>([]);
 
   const submitPlayerCount = (counter: number) => {
     setPlayerCount(counter);
@@ -16,7 +15,7 @@ function WhoIsIt() {
   };
 
   const startPlayers = (names: string[]) => {
-    setPlayers(names.map((name) => ({ name, selected: false, isMosquito: false})));
+    setPlayers(names.map((name) => ({ name, selected: false, team: name.substring(1,2)==='e' ? 'Mosquito':'Fly' })));
     setScreen(prevScreen => prevScreen+1);
   };
 
@@ -24,12 +23,12 @@ function WhoIsIt() {
     setPlayers((players) => {
       return players.map((x) => ({
         name: x.name,
-        selected: x.name === name && !selected,
-        isMosquito: x.isMosquito,
+        selected: x.name === name && !selected, 
+        team: x.team,
       }));
     });
   };
-
+  
   if (screen === 0)
     return (
       <PlayerCounter

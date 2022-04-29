@@ -12,6 +12,7 @@ export type NamePlayersProps = {
 export type PlayerProps = {
     name: string;
     index: number;
+    team: String;
     setPlayerName: (index: number, newName: string) => void;
   };
 
@@ -26,8 +27,8 @@ export type PlayerProps = {
   };
   
   export interface Player {
-    isMosquito: boolean;
     selected: boolean;
     name: string;
+    team: string;
   }
   

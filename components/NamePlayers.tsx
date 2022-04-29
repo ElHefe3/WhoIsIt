@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { View, Button } from 'react-native';
+import { Button, Alert } from 'react-native';
 import { NamePlayersProps } from '../types/types';
 import Player from './Player';
 
@@ -18,22 +18,35 @@ export default function NamePlayers({
         return newPlayers;
       });
     };
+
+    function determineTeam(index: number) {
+        const mosquitoIndex = (Math.floor(Math.random()*(playerCount-0+1)));
+        return mosquitoIndex===index ? 'Mosquito':'Fly'
+    }
     
+    const warn = (msg: string) => {
+        Alert.alert(
+            "Warning",
+            msg
+        );
+    };
+
     return (
-        <View>
+        <>
             {players.map((val, index) => (
             <Player
                 index={index}
-                key={index}
+                key={index} // todo: how to fix this
                 name={val}
+                team={determineTeam(index)}
                 setPlayerName={setPlayerName}
             />
             ))}
             <Button
-                onPress={() => startPlayers(players)}
+                onPress={() => players.includes('') ? startPlayers(players): warn("Please ensure all players are given names")}
                 title = "Start" 
             />
-        </View>
+        </>
     );
   }
 

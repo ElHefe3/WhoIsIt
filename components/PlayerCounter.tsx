@@ -1,5 +1,5 @@
 import { PlayerCounterProps } from "../types/types";
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { TextInput, Button, StyleSheet } from 'react-native';
 import React from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
