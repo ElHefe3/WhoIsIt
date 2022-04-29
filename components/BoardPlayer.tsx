@@ -1,17 +1,23 @@
 import { BoardPlayerProps } from '../types/types';
-import { StyleSheet, Text, Button } from 'react-native'
+import { StyleSheet, Text, Button, View, Pressable } from 'react-native'
+import { useState } from 'react';
 
 export default function BoardPlayer({
   player,
   setSelectedPlayer,
-  setFly,
-  setMosquito,
 }: BoardPlayerProps) {
+
   return (
-    <Button
-      title={player.name}
-      onPress={() => {player.isMosquito ? setMosquito(player.name, player.selected) : setFly(player.name, player.selected);}}
-      color={player.selected ? 'blue' : 'orange'}
-    />
+    <View>
+      <Pressable
+        onPress={() => setSelectedPlayer(player.name, player.selected,)}
+        style={{backgroundColor: player.selected ? 'blue' : 'orange', width: 200, padding: 12, margin: 12, borderRadius: 30, alignContent: 'center'}}
+      >
+        <Text style={{textAlign: 'center'}}>
+        {player.name}
+          
+        </Text>
+      </Pressable>
+    </View>
   );
 }

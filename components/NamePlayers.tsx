@@ -1,6 +1,5 @@
 import { useState } from 'react';
-import { View } from 'react-native';
-import { Button } from 'react-native';
+import { View, Button } from 'react-native';
 import { NamePlayersProps } from '../types/types';
 import Player from './Player';
 
@@ -25,7 +24,7 @@ export default function NamePlayers({
             {players.map((val, index) => (
             <Player
                 index={index}
-                key={Math.floor(Math.random()*1000)}
+                key={index}
                 name={val}
                 setPlayerName={setPlayerName}
             />
@@ -37,3 +36,4 @@ export default function NamePlayers({
         </View>
     );
   }
+

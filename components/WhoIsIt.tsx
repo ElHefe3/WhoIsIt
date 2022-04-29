@@ -8,7 +8,7 @@ function WhoIsIt() {
   const [screen, setScreen] = useState<number>(0);
   const [playerCount, setPlayerCount] = useState<number>(3);
   const [players, setPlayers] = useState<Player[]>([]);
-  const [randPlayer, setRandPlayer] = useState<number>(0);
+  const[team, setTeam] = useState<Player[]>([]);
 
   const submitPlayerCount = (counter: number) => {
     setPlayerCount(counter);
@@ -30,27 +30,6 @@ function WhoIsIt() {
     });
   };
 
-  const setMosquito = (name: string, selected: boolean) => {
-    setPlayers((players) => {
-      return players.map((x) => ({
-        name: x.name === name && !selected ? "Mosquito" : x.name,
-        selected: x.name === name && !selected,
-        isMosquito: x.isMosquito,
-      }));
-    });
-  };
-
-  const setFly = (name: string, selected: boolean) => {
-    setPlayers((players) => {
-      return players.map((x) => ({
-        name: x.name === name && !selected ? "fly" : x.name,
-        selected: x.name === name && !selected,
-        isMosquito: x.isMosquito,
-      }));
-    });
-  };
-
-
   if (screen === 0)
     return (
       <PlayerCounter
@@ -67,7 +46,7 @@ function WhoIsIt() {
 
    if (screen === 2)
     return (
-      <Board players={players} setSelectedPlayer={setSelectedPlayer} setFly={setFly} setMosquito={setMosquito} />
+      <Board players={players} setSelectedPlayer={setSelectedPlayer}/>
     );
     return null;
 }
