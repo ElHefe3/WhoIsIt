@@ -25,7 +25,7 @@ export default function NamePlayers({
             {players.map((val, index) => (
             <Player
                 index={index}
-                key={index}
+                key={Math.floor(Math.random()*1000)}
                 name={val}
                 setPlayerName={setPlayerName}
             />

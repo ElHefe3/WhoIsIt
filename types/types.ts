@@ -17,15 +17,20 @@ export type PlayerProps = {
 
   export type BoardProps = {
     players: Player[];
-    setSelectedPlayer: (name: string) => void;
+    setSelectedPlayer: (name: string, selected: boolean) => void;
+    setMosquito: (name: string, selected: boolean) => void;
+    setFly: (name: string, selected: boolean) => void;
   };
   
   export type BoardPlayerProps = {
     player: Player;
-    setSelectedPlayer: (name: string) => void;
+    setSelectedPlayer: (name: string, selected: boolean) => void;
+    setMosquito: (name: string, selected: boolean) => void;
+    setFly: (name: string, selected: boolean) => void;
   };
   
   export interface Player {
+    isMosquito: boolean;
     selected: boolean;
     name: string;
   }

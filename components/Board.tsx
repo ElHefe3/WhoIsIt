@@ -1,7 +1,7 @@
 import { BoardProps } from '../types/types';
 import BoardPlayer from './BoardPlayer';
 
-export default function Board({ players, setSelectedPlayer }: BoardProps) {
+export default function Board({ players, setSelectedPlayer, setFly, setMosquito }: BoardProps) {
   return (
     <>
       {players.map((val) => (
@@ -9,6 +9,8 @@ export default function Board({ players, setSelectedPlayer }: BoardProps) {
           key={val.name}
           player={val}
           setSelectedPlayer={setSelectedPlayer}
+          setFly={setFly}
+          setMosquito={setMosquito}
         />
       ))}
     </>
