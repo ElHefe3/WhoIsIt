@@ -6,7 +6,8 @@ export type PlayerCounterProps = {
 
 export type NamePlayersProps = {
     playerCount: number;
-    startPlayers: (players: string[]) => void;
+    team: string;
+    startPlayers: (players: string[], rand: number) => void;
 };
 
 export type PlayerProps = {

@@ -1,8 +1,8 @@
 import { PlayerProps } from '../types/types';
-import { View, TextInput, StyleSheet, Text } from 'react-native';
+import { View, TextInput, StyleSheet, Text, KeyboardAvoidingView } from 'react-native';
 export default function Player({ index, name, setPlayerName }: PlayerProps) {
     return (
-      <>
+      <KeyboardAvoidingView>
         <Text 
             style={stylesText.player}
             >
@@ -18,7 +18,7 @@ export default function Player({ index, name, setPlayerName }: PlayerProps) {
             setPlayerName(index, currentTarget);
           }}
         />
-      </>
+      </KeyboardAvoidingView>
     );
   }
   

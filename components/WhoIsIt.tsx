@@ -9,13 +9,18 @@ function WhoIsIt() {
   const [playerCount, setPlayerCount] = useState<number>(3);
   const [players, setPlayers] = useState<Player[]>([]);
 
+  const getTeam = (index:number, rand:number) =>
+  (index === rand ? 'mosquito':'fly')
+
   const submitPlayerCount = (counter: number) => {
     setPlayerCount(counter);
     setScreen(prevScreen => prevScreen+1);
   };
 
-  const startPlayers = (names: string[]) => {
-    setPlayers(names.map((name) => ({ name, selected: false, team: name.substring(1,2)==='e' ? 'Mosquito':'Fly' })));
+  const startPlayers = (names: string[], rand: number) => {
+    rand = (Math.floor(Math.random()*(playerCount-0+1)));
+    console.log(playerCount +" : "+ rand);
+    setPlayers(names.map((name, index) => ({ name, selected: false, team: getTeam(index, rand) })));
     setScreen(prevScreen => prevScreen+1);
   };
 
@@ -40,7 +45,7 @@ function WhoIsIt() {
 
    if (screen === 1)
     return (
-      <NamePlayers playerCount={playerCount} startPlayers={startPlayers} />
+      <NamePlayers playerCount={playerCount} team='' startPlayers={startPlayers} />
     );
 
    if (screen === 2)
