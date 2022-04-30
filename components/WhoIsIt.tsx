@@ -19,7 +19,6 @@ function WhoIsIt() {
 
   const startPlayers = (names: string[], rand: number) => {
     rand = (Math.floor(Math.random()*(playerCount-0+1)));
-    console.log(playerCount +" : "+ rand);
     setPlayers(names.map((name, index) => ({ name, selected: false, team: getTeam(index, rand) })));
     setScreen(prevScreen => prevScreen+1);
   };

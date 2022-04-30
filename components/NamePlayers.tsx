@@ -10,6 +10,11 @@ export default function NamePlayers({
     const [players, setPlayers] = useState<string[]>(
       Array.from(Array(playerCount).keys()).map(x => ''),
     );
+
+    function removeDuplicates(arr: string[]) {
+      return arr.filter((item, 
+          index) => arr.indexOf(item) === index);
+    }
   
     const setPlayerName = (index: number, newName: string) => {
       setPlayers((players) => {
@@ -19,10 +24,10 @@ export default function NamePlayers({
       });
     };
     
-    const warn = (msg: string) => {
+    const warn = () => {
         Alert.alert(
             "Warning",
-            msg
+            players.includes('') ? "Please ensure all players have been named" : "Please ensure each player"
         );
     };
 
@@ -39,7 +44,7 @@ export default function NamePlayers({
             />
             ))}
               <Button
-                  onPress={() => players.includes('') ? warn("Please ensure all players are given names"):startPlayers(players, 0) }
+                  onPress={() => players.includes('') || removeDuplicates(players).length != players.length ? warn():startPlayers(players, 0) }
                   title = "Start" 
               />
             <View style={{padding: 50}}/>
